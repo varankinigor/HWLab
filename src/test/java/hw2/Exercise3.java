@@ -1,20 +1,48 @@
-package hw1;
+package hw2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.List;
 
-//1 Create a new test in a new Java class, specify test name in accordance with checking functionality
-public class SeleniumTest {
+import static java.lang.System.setProperty;
+
+public class Exercise3 {
+    private WebDriver driver;
+
+    @BeforeSuite
+    public void beforeSuitMethod() {
+        setProperty("webdriver.chrome.driver", "chromedriver.exe");
+    }
+
+    @BeforeTest
+    public void beforeTestMethod() {
+        driver = new ChromeDriver();
+    }
+
+    @BeforeClass
+    public void beforeClassMethod() {
+        System.out.println(driver.getTitle());
+    }
+
+    @AfterTest
+    public void afterTestMethod() {
+        driver.close();
+    }
+
+    @AfterSuite
+    public void afterSuiteMethod() {
+        if(driver.toString().contains("null")) {
+            driver.quit();
+        }
+    }
+
     @Test
     public void testEpamWebPage() {
-
-        WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
         //2 Open test site by URL
@@ -60,8 +88,5 @@ public class SeleniumTest {
         Assert.assertTrue(elementMainTitle.isDisplayed());
         WebElement elementMainText = driver.findElement(By.className(("main-txt")));
         Assert.assertTrue(elementMainText.isDisplayed());
-
-        //10 Close Browser
-        driver.close();
     }
 }

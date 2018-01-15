@@ -1,0 +1,7 @@
+<suite name="Selenium tests" verbose="1" >
+    <test name="SeleniumTest" >
+        <classes>
+            <class name="hw2.Exercise3" />
+        </classes>
+    </test>
+</suite>

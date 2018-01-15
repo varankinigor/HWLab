@@ -1,0 +1,13 @@
+<suite name="Regression tests" verbose="1" >
+    <test name="Regression" >
+        <groups>
+            <run>
+                <include name="Regression" />
+            </run>
+        </groups>
+        <classes>
+            <class name="hw2.Exercise2Class2" />
+            <class name="hw2.Exercise2Class3" />
+        </classes>
+    </test>
+</suite>

@@ -8,12 +8,10 @@
     <artifactId>HWLab</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>6.13.1</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -21,6 +19,7 @@
             <artifactId>selenium-java</artifactId>
             <version>3.8.1</version>
         </dependency>
+
     </dependencies>
     
 </project>

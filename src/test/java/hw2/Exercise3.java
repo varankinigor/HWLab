@@ -37,7 +37,7 @@ public class Exercise3 {
 
     @AfterSuite
     public void afterSuiteMethod() {
-        if(driver.toString().contains("null")) {
+        if (driver.toString().contains("null")) {
             driver.quit();
         }
     }
@@ -50,7 +50,7 @@ public class Exercise3 {
         driver.navigate().to("https://jdi-framework.github.io/tests");
 
         //3 Assert Browser title
-        assertEquals(driver.getTitle(),"Index Page");
+        assertEquals(driver.getTitle(), "Index Page");
 
         //4 Perform login
         driver.findElement(By.xpath("/html/body/div/header/div/nav/ul[2]/li")).click();
@@ -63,26 +63,22 @@ public class Exercise3 {
         assertEquals(name, "PITER CHAILOVSKII");
 
         //6 Assert Browser title
-        assertEquals(driver.getTitle(),"Index Page");
+        assertEquals(driver.getTitle(), "Index Page");
 
         //7 Assert that there are 4 images on the Home Page and they are displayed
         List<WebElement> listImages = driver.findElements(By.className("benefit-icon"));
         assertEquals(listImages.size(), 4);
-        for (WebElement image: listImages) {
+        for (WebElement image : listImages) {
             assertTrue(image.isDisplayed());
         }
 
         //8 Assert that there are 4 texts on the Home Page and check them by getting texts
         List<WebElement> listTexts = driver.findElements(By.className("benefit-txt"));
         assertEquals(listTexts.size(), 4);
-        assertEquals(listTexts.get(0).getText(),
-                "To include good practices\nand ideas from successful\nEPAM projec");
-        assertEquals(listTexts.get(1).getText(),
-                "To be flexible and\ncustomizable");
-        assertEquals(listTexts.get(2).getText(),
-                "To be multiplatform");
-        assertEquals(listTexts.get(3).getText(),
-                "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");
+        assertEquals(listTexts.get(0).getText(), "To include good practices\nand ideas from successful\nEPAM projec");
+        assertEquals(listTexts.get(1).getText(), "To be flexible and\ncustomizable");
+        assertEquals(listTexts.get(2).getText(), "To be multiplatform");
+        assertEquals(listTexts.get(3).getText(), "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");
 
         //9 Assert that there are the main header and the text below it on the Home Page
         WebElement elementMainTitle = driver.findElement(By.className("main-title"));

@@ -50,12 +50,9 @@ public class SeleniumTest {
         assertEquals(listTexts.size(), 4);
         assertEquals(listTexts.get(0).getText(),
                 "To include good practices\nand ideas from successful\nEPAM projec");
-        assertEquals(listTexts.get(1).getText(),
-                "To be flexible and\ncustomizable");
-        assertEquals(listTexts.get(2).getText(),
-                "To be multiplatform");
-        assertEquals(listTexts.get(3).getText(),
-                "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");
+        assertEquals(listTexts.get(1).getText(), "To be flexible and\ncustomizable");
+        assertEquals(listTexts.get(2).getText(), "To be multiplatform");
+        assertEquals(listTexts.get(3).getText(), "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");
 
         //9 Assert that there are the main header and the text below it on the Home Page
         WebElement elementMainTitle = driver.findElement(By.className("main-title"));

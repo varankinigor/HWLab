@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Exercise1 extends TestBase {
@@ -21,14 +22,11 @@ public class Exercise1 extends TestBase {
     }
     @Test(dataProvider = "dp")
     public void dpTest(String expectedText) {
-        List<WebElement> listTexts = driver.findElements(By.className("benefit-txt"));
-        boolean isFound = false;
-        for (WebElement elementText : listTexts) {
-            if (elementText.getText().equals(expectedText)) {
-                isFound = true;
-                break;
-            }
+        List<WebElement> listElements = driver.findElements(By.className("benefit-txt"));
+        List<String> listTexts = new ArrayList<String>();
+        for (WebElement element: listElements) {
+            listTexts.add(element.getText());
         }
-        Assert.assertTrue(isFound);
+        Assert.assertTrue(listTexts.contains(expectedText));
     }
 }

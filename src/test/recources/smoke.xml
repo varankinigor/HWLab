@@ -1,13 +1,13 @@
-<suite name="Smoke tests" verbose="1" >
-    <test name="Smoke" >
+<suite name="Smoke tests" verbose="1">
+    <test name="Smoke">
         <groups>
             <run>
-                <include name="Smoke" />
+                <include name="Smoke"/>
             </run>
         </groups>
         <classes>
-            <class name="hw2.Exercise2Class1" />
-            <class name="hw2.Exercise2Class3" />
+            <class name="hw2.Exercise2Class1"/>
+            <class name="hw2.Exercise2Class3"/>
         </classes>
     </test>
 </suite>

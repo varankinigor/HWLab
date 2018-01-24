@@ -1,5 +1,6 @@
 package hw3;
 
+import enums.hw3.IndexPageTextsEnum;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -37,23 +38,23 @@ public class IndexPage {
     @FindBy(css = ".main-txt")
     private WebElement mainText;
 
-    public void open(WebDriver driver, String url) {
-        driver.navigate().to(url);
+    public void open(WebDriver driver, IndexPageTextsEnum url) {
+        driver.navigate().to(url.text);
     }
 
-    public void checkTitle(WebDriver driver, String title) {
-        assertEquals(driver.getTitle(), title);
+    public void checkTitle(WebDriver driver, IndexPageTextsEnum title) {
+        assertEquals(driver.getTitle(), title.text);
     }
 
-    public void login(String login, String password) {
+    public void login(IndexPageTextsEnum login, IndexPageTextsEnum password) {
         loginFormButton.click();
-        loginTextBox.sendKeys(login);
-        passwordTextDox.sendKeys(password);
+        loginTextBox.sendKeys(login.text);
+        passwordTextDox.sendKeys(password.text);
         loginButton.click();
     }
 
-    public void checkName(String name) {
-        assertEquals(loginName.getText(), name);
+    public void checkName(IndexPageTextsEnum name) {
+        assertEquals(loginName.getText(), name.text);
     }
 
     public void checkIsDisplayed4Images() {
@@ -63,11 +64,11 @@ public class IndexPage {
         }
     }
 
-    public void check4Texts(String text1, String text2, String text3, String text4) {
-        assertEquals(listTexts.get(0).getText(), text1);
-        assertEquals(listTexts.get(1).getText(), text2);
-        assertEquals(listTexts.get(2).getText(), text3);
-        assertEquals(listTexts.get(3).getText(), text4);
+    public void check4Texts(IndexPageTextsEnum text1, IndexPageTextsEnum text2, IndexPageTextsEnum text3, IndexPageTextsEnum text4) {
+        assertEquals(listTexts.get(0).getText(), text1.text);
+        assertEquals(listTexts.get(1).getText(), text2.text);
+        assertEquals(listTexts.get(2).getText(), text3.text);
+        assertEquals(listTexts.get(3).getText(), text4.text);
     }
 
     public void checkIsDisplayedMainHeader() {

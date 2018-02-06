@@ -60,8 +60,8 @@ public class IndexPage {
     private SelenideElement headerServiceDatesLink;
 
     @Step
-    public void openIndexPage(IndexPageEnum url) {
-        open(url.text);
+    public void openIndexPage() {
+        open(IndexPageEnum.URL.text);
     }
 
     @Step

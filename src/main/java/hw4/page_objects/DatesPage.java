@@ -1,8 +1,8 @@
 package hw4.page_objects;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Step;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -27,7 +27,8 @@ public class DatesPage {
         if (leftPos != 0) {
             actions().dragAndDropBy(sliders.get(0), (int) (step * leftPos), 0).build().perform();
         }
-        Assert.assertEquals(sliders.get(0).getText(), leftPos.toString());
-        Assert.assertEquals(sliders.get(1).getText(), rightPos.toString());
+//        переделать на should
+        sliders.get(0).should(Condition.text(leftPos.toString()));
+        sliders.get(1).should(Condition.text(rightPos.toString()));
     }
 }

@@ -29,7 +29,6 @@ public class DatesPage {
         if (leftPos != 0) {
             actions().dragAndDropBy(sliders.get(0), (int) (step * leftPos), 0).build().perform();
         }
-//        переделать на should
         sliders.get(0).should(Condition.text(leftPos.toString()));
         sliders.get(1).should(Condition.text(rightPos.toString()));
     }

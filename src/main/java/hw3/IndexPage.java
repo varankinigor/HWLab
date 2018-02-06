@@ -74,11 +74,12 @@ public class IndexPage {
         }
     }
 
+//В последнем ассерте использовал реплейс троеточия, так как почему то в jenkins тест крашится, видя вместо троеточия абракадабру
     public void check4Texts() {
         assertEquals(listTexts.get(PRACTICE.ordinal()).getText(), PRACTICE.text);
         assertEquals(listTexts.get(CUSTOM.ordinal()).getText(), CUSTOM.text);
         assertEquals(listTexts.get(MULTI.ordinal()).getText(), MULTI.text);
-        assertEquals(listTexts.get(BASE.ordinal()).getText(), BASE.text);
+        assertEquals(listTexts.get(BASE.ordinal()).getText().replace("…", ""), BASE.text);
     }
 
     public void checkIsDisplayedMainHeader() {

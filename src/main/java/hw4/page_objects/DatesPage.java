@@ -1,16 +1,18 @@
 package hw4.page_objects;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.allure.annotations.Step;
+
+import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.actions;
 
 public class DatesPage {
     @FindBy(css = ".ui-slider-handle")
-    private ElementsCollection sliders;
+    private List<SelenideElement> sliders;
 
     @Step
     public void setAndCheckSliders(Integer leftPos, Integer rightPos) {

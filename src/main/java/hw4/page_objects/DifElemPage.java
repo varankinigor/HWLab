@@ -2,14 +2,15 @@ package hw4.page_objects;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import edu.emory.mathcs.backport.java.util.Collections;
 import enums.DifElemEnum;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.codeborne.selenide.Condition.*;
 
@@ -33,9 +34,9 @@ public class DifElemPage {
     private SelenideElement rightSection;
 
     @FindBy(css = "ul.panel-body-list.logs li")
-    private ElementsCollection actualLog;
+    private List<SelenideElement> actualLog;
 
-    private List<String> expectedLog = new ArrayList<>();
+    private Map<String, String> expectedLog = new HashMap<>();
 
     @Step
     public void checkDifElemPageInterfaceElements() {
@@ -54,38 +55,52 @@ public class DifElemPage {
     public void selectCheckbox(DifElemEnum elem) {
         chexboxes.find(text(elem.text)).click();
         chexboxes.find(text(elem.text)).$("input").should(checked);
-        expectedLog.add(elem.text + ": condition changed to true");
+        expectedLog.put(elem.text, "true");
     }
 
     @Step
-    //селен не металл :(
     public void selectRadio(DifElemEnum metal) {
         radios.find(text(metal.text)).click();
         radios.find(text(metal.text)).$("input").should(checked);
-        expectedLog.add("metal: value changed to " + metal.text);
+        expectedLog.put("metal", metal.text);
     }
 
     @Step
     public void selectDropdown(DifElemEnum color) {
         dropdown.selectOption(color.text);
         dropdown.shouldBe(text(color.text));
-        expectedLog.add("Colors: value changed to " + color.text);
+        expectedLog.put("Colors", color.text);
     }
 
     @Step
     public void checkLog() {
-        actualLog.shouldHaveSize(expectedLog.size());
-        Collections.reverse(expectedLog);
-        for (int i = 0; i < expectedLog.size(); i++) {
-            Assert.assertTrue(actualLog.get(i).getText().endsWith(expectedLog.get(i)));
+        List<String> actualLogList = new ArrayList<>();
+        for(SelenideElement actualLogElement : actualLog) {
+            actualLogList.add(actualLogElement.getText());
         }
-        Collections.reverse(expectedLog);
+        actualLogList.replaceAll(str -> str.substring(9));
+
+        for (String key : expectedLog.keySet()) {
+            boolean isKeyFound = false;
+            for (String actualLogStr : actualLogList) {
+                if (actualLogStr.startsWith(key)) {
+                    Assert.assertTrue(actualLogStr.endsWith(expectedLog.get(key)));
+                    isKeyFound = true;
+                    break;
+                }
+            }
+            if (!isKeyFound) {
+                Assert.assertTrue(false, key + " is not found in logs");
+            } else {
+                break;
+            }
+        }
     }
 
     @Step
     public void unselectCheckbox(DifElemEnum elem) {
         chexboxes.find(text(elem.text)).click();
         chexboxes.find(text(elem.text)).$("input").shouldNot(checked);
-        expectedLog.add(elem.text + ": condition changed to false");
+        expectedLog.put(elem.text, "false");
     }
 }

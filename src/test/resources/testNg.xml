@@ -1,0 +1,8 @@
+<suite name="Selenide Test Suite" verbose="1">
+    <test name="hw4">
+        <classes>
+            <class name="hw4.SelenideTestCase1"/>
+            <class name="hw4.SelenideTestCase2"/>
+        </classes>
+    </test>
+</suite>

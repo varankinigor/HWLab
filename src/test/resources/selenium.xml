@@ -1,7 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
 <suite name="Selenium tests" verbose="1">
     <test name="SeleniumTest">
         <classes>
-            <class name="hw2.Exercise3"/>
+            <class name="hw1.SeleniumTest"/>
         </classes>
     </test>
 </suite>

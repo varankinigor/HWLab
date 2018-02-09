@@ -3,11 +3,12 @@ package hw4.page_objects;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import enums.DifElemEnum;
+import lombok.SneakyThrows;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import ru.yandex.qatools.allure.annotations.Step;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,29 +73,24 @@ public class DifElemPage {
         expectedLog.put("Colors", color.text);
     }
 
+    @SneakyThrows
     @Step
-    public void checkLog() {
-        List<String> actualLogList = new ArrayList<>();
-        for(SelenideElement actualLogElement : actualLog) {
-            actualLogList.add(actualLogElement.getText());
-        }
-        actualLogList.replaceAll(str -> str.substring(9));
-
-        for (String key : expectedLog.keySet()) {
-            boolean isKeyFound = false;
-            for (String actualLogStr : actualLogList) {
-                if (actualLogStr.startsWith(key)) {
-                    Assert.assertTrue(actualLogStr.endsWith(expectedLog.get(key)));
-                    isKeyFound = true;
-                    break;
+    public void checkLog(DifElemEnum value) {
+        for (SelenideElement element : actualLog) {
+            if (element.getText().substring(9).startsWith(value.text)) {
+                Assert.assertTrue(element.getText().endsWith(expectedLog.get(value.text)));
+                return;
+            } else if (element.getText().endsWith(value.text)) {
+                if (element.getText().substring(9).startsWith("Colors")) {
+                    Assert.assertTrue(element.getText().endsWith(expectedLog.get("Colors")));
+                    return;
+                } else if (element.getText().substring(9).startsWith("metal")) {
+                    Assert.assertTrue(element.getText().endsWith(expectedLog.get("metal")));
+                    return;
                 }
             }
-            if (!isKeyFound) {
-                Assert.assertTrue(false, key + " is not found in logs");
-            } else {
-                break;
-            }
         }
+        throw new IOException("Log error");
     }
 
     @Step

@@ -24,10 +24,10 @@ public class DatesPage {
             actions().dragAndDropBy(sliders.get(1), -1000, 0).build().perform();
         }
         if (rightPos != 0) {
-            actions().dragAndDropBy(sliders.get(1), (int) (step * rightPos), 0).build().perform();
+            actions().dragAndDropBy(sliders.get(1), (int) (Math.floor(step * rightPos)), 0).build().perform();
         }
         if (leftPos != 0) {
-            actions().dragAndDropBy(sliders.get(0), (int) (step * leftPos), 0).build().perform();
+            actions().dragAndDropBy(sliders.get(0), (int) (Math.floor(step * leftPos)), 0).build().perform();
         }
         sliders.get(0).should(Condition.text(leftPos.toString()));
         sliders.get(1).should(Condition.text(rightPos.toString()));

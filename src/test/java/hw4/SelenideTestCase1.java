@@ -63,13 +63,17 @@ public class SelenideTestCase1 extends SelenideBase {
         difElemPage.selectDropdown(DifElemEnum.YELLOW);
 
         //12 Check in logs section selected values and status (true|false)
-        difElemPage.checkLog();
+        difElemPage.checkLog(DifElemEnum.WATER);
+        difElemPage.checkLog(DifElemEnum.WIND);
+        difElemPage.checkLog(DifElemEnum.SELEN);
+        difElemPage.checkLog(DifElemEnum.YELLOW);
 
         //13 Unselect and assert checkboxes
         difElemPage.unselectCheckbox(DifElemEnum.WATER);
         difElemPage.unselectCheckbox(DifElemEnum.WIND);
 
         //14 Check in logs section unselected values and status (true|false)
-        difElemPage.checkLog();
+        difElemPage.checkLog(DifElemEnum.WATER);
+        difElemPage.checkLog(DifElemEnum.WIND);
     }
 }

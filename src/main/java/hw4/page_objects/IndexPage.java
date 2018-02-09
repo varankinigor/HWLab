@@ -9,7 +9,6 @@ import ru.yandex.qatools.allure.annotations.Step;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;
-import static enums.ServiceDropdownEnum.TEXT_1;
 import static enums.ServiceDropdownEnum.values;
 
 public class IndexPage {
@@ -92,7 +91,7 @@ public class IndexPage {
         headerServiceDropdown.click();
         headerServiceDropdownMenu.shouldHaveSize(values().length);
         for (enums.ServiceDropdownEnum s : values()) {
-            headerServiceDropdownMenu.get(TEXT_1.ordinal()).should(text(TEXT_1.text));
+            headerServiceDropdownMenu.get(s.ordinal()).should(text(s.text));
         }
     }
 
@@ -101,7 +100,7 @@ public class IndexPage {
         leftServiceSidebar.click();
         leftServiceSidebarMenu.shouldHaveSize(values().length);
         for (enums.ServiceDropdownEnum s : values()) {
-            leftServiceSidebarMenu.get(TEXT_1.ordinal()).should(text(TEXT_1.text));
+            leftServiceSidebarMenu.get(s.ordinal()).should(text(s.text));
         }
     }
 

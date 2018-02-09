@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -15,6 +16,7 @@ import static org.testng.Assert.assertTrue;
 public class SeleniumTest {
     @Test
     public void loginPageTest() {
+        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 

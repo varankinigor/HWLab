@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static enums.IndexPageEnum.*;
+import static java.lang.System.setProperty;
 
 public class PageObjectTest {
     private WebDriver driver;
@@ -15,6 +16,7 @@ public class PageObjectTest {
 
     @BeforeClass(alwaysRun = true)
     public void setUp() {
+        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         indexPage = PageFactory.initElements(driver, IndexPage.class);

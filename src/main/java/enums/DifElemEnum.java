@@ -11,5 +11,4 @@ public enum DifElemEnum {
     DifElemEnum(String text) {
         this.text = text;
     }
-
 }

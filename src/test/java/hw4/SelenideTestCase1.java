@@ -1,6 +1,5 @@
 package hw4;
 
-import enums.DifElemEnum;
 import hw4.page_objects.DifElemPage;
 import hw4.page_objects.IndexPage;
 import org.testng.annotations.BeforeClass;
@@ -11,6 +10,7 @@ import ru.yandex.qatools.allure.annotations.Stories;
 import testBases.SelenideBase;
 
 import static com.codeborne.selenide.Selenide.page;
+import static enums.DifElemEnum.*;
 import static enums.IndexPageEnum.*;
 
 @Listeners(listeners.AllureAttachmentListener.class)
@@ -53,27 +53,23 @@ public class SelenideTestCase1 extends SelenideBase {
         difElemPage.checkDifElemPageInterfaceElements();
 
         //9 Select and assert checkboxes
-        difElemPage.selectCheckbox(DifElemEnum.WATER);
-        difElemPage.selectCheckbox(DifElemEnum.WIND);
+        difElemPage.selectCheckbox(WATER);
+        difElemPage.selectCheckbox(WIND);
 
         //10 Select radio
-        difElemPage.selectRadio(DifElemEnum.SELEN);
+        difElemPage.selectRadio(SELEN);
 
         //11 Select in dropdown
-        difElemPage.selectDropdown(DifElemEnum.YELLOW);
+        difElemPage.selectDropdown(YELLOW);
 
         //12 Check in logs section selected values and status (true|false)
-        difElemPage.checkLog(DifElemEnum.WATER);
-        difElemPage.checkLog(DifElemEnum.WIND);
-        difElemPage.checkLog(DifElemEnum.SELEN);
-        difElemPage.checkLog(DifElemEnum.YELLOW);
+        difElemPage.checkLog(WATER, WIND, SELEN, YELLOW);
 
         //13 Unselect and assert checkboxes
-        difElemPage.unselectCheckbox(DifElemEnum.WATER);
-        difElemPage.unselectCheckbox(DifElemEnum.WIND);
+        difElemPage.unselectCheckbox(WATER);
+        difElemPage.unselectCheckbox(WIND);
 
         //14 Check in logs section unselected values and status (true|false)
-        difElemPage.checkLog(DifElemEnum.WATER);
-        difElemPage.checkLog(DifElemEnum.WIND);
+        difElemPage.checkLog(WATER, WIND);
     }
 }

@@ -73,11 +73,12 @@ public class DifElemPage {
     }
 
     @Step
-    public void checkLog(DifElemEnum key) {
+    public void checkLog(DifElemEnum... keyArr) {
         Map<String, String> actualLogMap = prepareLog(actualLogList);
         Assert.assertEquals(actualLogMap.size(), expectedLogMap.size());
-
-        Assert.assertEquals(actualLogMap.get(key), expectedLogMap.get(key));
+        for(DifElemEnum key : keyArr) {
+            Assert.assertEquals(actualLogMap.get(key), expectedLogMap.get(key));
+        }
     }
 
     @Step
